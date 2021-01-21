@@ -3,7 +3,7 @@ import chess.pgn
 import numpy as np
 from tqdm import tqdm
 
-#22506 Games Available
+#Load all available games from a PGN file
 def load_data(n=0):
 	pgn=open("data.pgn")
 	games=[]
@@ -32,6 +32,7 @@ def load_data(n=0):
 	print('Samples Output: ', len(games))
 	return games
 
+# transforming all the data into input and a label
 def getXY(n=0):
 	games=load_data(n)
 	Y=[]
@@ -57,7 +58,7 @@ def avgwinrate(n=0):
 
 	return s/i
 			
-
+#Conversion of the chess board into a numpy array
 def toNumpy(board):
 	b_str,turn=str(board.unicode).split("'")[1].split(' ')[0:2]
 	turn={'b':-1,'w':1}[turn]
